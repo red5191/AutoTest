@@ -30,30 +30,23 @@ def empty():
     pass
 
 
-print(f'2.{empty()}', '\n')
-
-
 def input_even_num():
-    try:
-        global n
-        n = float(input('3. Перечислим все четные числа до '))
-    except ValueError:
-        print('Это не число, попробуй снова', '\n')
-        input_even_num()
-    else:
-        return n
+    global n
+    while True:
+        try:
+            n = int(input('3. Перечислим все четные числа до '))
+        except ValueError:
+            print('Это не число, попробуй снова', '\n')
+        else:
+            return n
 
 
 input_even_num()
 
 
 def even_num(n):
-    if n >= 0:
-        for num in range(int(n / 2 + 1)):
-            yield num * 2
-    elif n < 0:
-        for num in range(abs(int(- n / 2 + 1))):
-            yield num * (- 2)
+    for num in range(0, (int(n) + 1), 2):
+        yield num
 
 
 for x in even_num(n):
